@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_58872_needit.newUserID</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Inserts a new userID using the first letter of first name and last name</description>
+        <name>newUserID</name>
+        <script><![CDATA[function newUserID() {
+	//Generates an userID concatenating the first letter of name with lastname 
+	
+	//name and lastname from current object
+    var name = current.first_name.toLowerCase();
+    var last_name = current.last_name.toLowerCase();
+	
+	//Obtains the first letter of name
+    var first_letter_of_name = name.slice(0, 1);
+	
+	// Assigns the new UserID
+    current.user_name = first_letter_of_name + last_name;
+
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-08 19:56:41</sys_created_on>
+        <sys_id>8f3f6bf1973511106881bf36f053afb0</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>newUserID</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_8f3f6bf1973511106881bf36f053afb0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-08 21:59:48</sys_updated_on>
+    </sys_script_include>
+</record_update>
