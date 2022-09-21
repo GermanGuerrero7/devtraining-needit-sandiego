@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="sys_user" label="Approved Users" max_length="40" name="x_58872_needit_approved_users" sizeclass="81" type="collection">
+        <element display="true" label="Age" max_length="40" name="age" type="integer"/>
+        <element label="Company Country" max_length="40" name="company_country" reference_qual="countrySTARTSWITH^EQ" reference_qual_condition="countrySTARTSWITH^EQ" type="string"/>
+        <element label="Company Manager" max_length="40" name="company_manager" reference="core_company" type="reference"/>
+        <element label="Company Phone" max_length="15" name="company_phone" type="string"/>
+    </element>
+</database>

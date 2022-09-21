@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.GetCompanyData</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetCompanyData</name>
+        <script><![CDATA[var GetCompanyData = Class.create();
+
+// Object inheritance from global.AbstractAjaxProcessor
+GetCompanyData.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	getCountry: function() {
+		// GlideRecord object from core_company
+		var companyRecord = new GlideRecord("core_company");
+		try{
+			// Obtaining record using company's sys_id parameter sendend by client
+			companyRecord.get(this.getParameter('sysparm_companyID'));
+		
+		}catch(err){
+			gs.info("Error " + err);
+		}
+		
+		// Send back country from the record
+		return companyRecord.country + '';
+		
+	},
+	
+	getPhone: function() {
+		// GlideRecord object from core_company
+		var companyRecord = new GlideRecord("core_company");
+		try{
+			// Obtaining record using company's sys_id parameter sendend by client
+			companyRecord.get(this.getParameter('sysparm_companyID'));
+		
+		}catch(err){
+			gs.info("Error " + err);
+		}
+		
+		// Send back country from the record
+		return companyRecord.phone + '';
+		
+	},
+	
+	
+    type: 'GetCompanyData'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-13 22:39:01</sys_created_on>
+        <sys_id>61ef75ab9779d1106881bf36f053afc9</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>GetCompanyData</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_61ef75ab9779d1106881bf36f053afc9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-14 17:11:25</sys_updated_on>
+    </sys_script_include>
+</record_update>

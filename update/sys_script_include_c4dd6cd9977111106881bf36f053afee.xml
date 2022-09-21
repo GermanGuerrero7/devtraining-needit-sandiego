@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>x_58872_needit.NeedItUtils</api_name>
         <caller_access/>
@@ -25,17 +25,86 @@ NeedItUtils.prototype = {
     },
 
     newUserId: function() {
-		//Generates an userID concatenating the first letter of name with lastname 
-	
-		//name and lastname from current object
+        //Generates an userID concatenating the first letter of name with lastname, if there's already     the same user ID adds a number to differentiate*/
+
+        //name and lastname from current object
         var name = current.first_name.toLowerCase();
         var last_name = current.last_name.toLowerCase();
-		
-		//Obtains the first letter of name
+
+        //Obtains the first letter of name
         var first_letter_of_name = name.slice(0, 1);
+
+        // Assigns the new UserID
+        var user_name = first_letter_of_name + last_name;
+
+        var duplicates = countDuplicates(user_name);
+        gs.info("Count user_name : " + (user_name));
+
+        if (duplicates >= 1) {
+            current.user_name = user_name + (duplicates + '');
+        } else {
+            current.user_name = user_name;
+        }
+
+        // Uses GlideAggregate to count the user_name record that starts with the value compared
+        function countDuplicates(value) {
+            // Create an aggregate object  
+            var aggUser = new GlideAggregate('sys_user');
+
+            // Adds database aggregation to COUNT queries
+            aggUser.addAggregate('COUNT');
+
+            // Add query parameters
+            aggUser.addQuery('user_name', 'STARTSWITH', value);
+
+
+            // Execute query 
+            aggUser.query();
+
+
+            // Process returned records
+            var count = 0;
+            if (aggUser.next())
+                count = aggUser.getAggregate('COUNT');
+
+            gs.info(count);
+
+            return count;
+
+        }
+    },
+
+    assignRole: function(role) {
+        
+
+        var role_sys_id;
+
+        var grr = new GlideRecord('sys_user_role');
+
+        grr.initialize();
+
+        grr.addQuery('name', '=', role);
+
+        grr.query();
+
+        if (grr.next())
+            role_sys_id = grr.getUniqueValue();
+
+        gs.addInfoMessage("Role ID " + role_sys_id);
+
+        var grd = new GlideRecord('sys_user_has_role');
 		
-		// Assigns the new UserID
-        current.user_name = first_letter_of_name + last_name;
+		//Creates an empty record suitable for population before an insert.
+        grd.initialize();
+
+        grd.user = current.getUniqueValue();
+
+        //gs.info("Sys_ID: " + current.getUniqueValue());
+        //gs.addInfoMessage(current.getUniqueValue());
+
+        grd.role = role_sys_id;
+
+        grd.insert();
 
     },
 
@@ -45,13 +114,13 @@ NeedItUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-09-06 16:18:36</sys_created_on>
         <sys_id>c4dd6cd9977111106881bf36f053afee</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>NeedItUtils</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sys_script_include_c4dd6cd9977111106881bf36f053afee</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-08 21:51:44</sys_updated_on>
+        <sys_updated_on>2022-09-21 15:49:33</sys_updated_on>
     </sys_script_include>
 </record_update>
