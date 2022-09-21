@@ -56,7 +56,7 @@
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <short_description/>
+        <short_description>Captures and validates new user data</short_description>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
         <state>published</state>
@@ -64,14 +64,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-09-12 21:50:50</sys_created_on>
         <sys_id>30b3b8d797b591106881bf36f053af29</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>New User Ex1</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy/>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sc_cat_item_30b3b8d797b591106881bf36f053af29</sys_update_name>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2022-09-14 19:24:34</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-21 17:14:59</sys_updated_on>
         <taxonomy_topic/>
         <template/>
         <template_manager_roles/>

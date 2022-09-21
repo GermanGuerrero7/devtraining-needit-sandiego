@@ -25,7 +25,7 @@ NeedItUtils.prototype = {
     },
 
     newUserId: function() {
-        //Generates an userID concatenating the first letter of name with lastname, if there's already     the same user ID adds a number to differentiate*/
+        //Generates an userID concatenating the first letter of name with lastname, if there's      already     the same user ID adds a number to differentiate*/
 
         //name and lastname from current object
         var name = current.first_name.toLowerCase();
@@ -81,8 +81,6 @@ NeedItUtils.prototype = {
 
         var grr = new GlideRecord('sys_user_role');
 
-        grr.initialize();
-
         grr.addQuery('name', '=', role);
 
         grr.query();
@@ -90,7 +88,7 @@ NeedItUtils.prototype = {
         if (grr.next())
             role_sys_id = grr.getUniqueValue();
 
-        gs.addInfoMessage("Role ID " + role_sys_id);
+        //gs.addInfoMessage("Role ID " + role_sys_id);
 
         var grd = new GlideRecord('sys_user_has_role');
 		
@@ -114,13 +112,13 @@ NeedItUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-09-06 16:18:36</sys_created_on>
         <sys_id>c4dd6cd9977111106881bf36f053afee</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>NeedItUtils</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sys_script_include_c4dd6cd9977111106881bf36f053afee</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-09-21 15:49:33</sys_updated_on>
+        <sys_updated_on>2022-09-21 22:21:48</sys_updated_on>
     </sys_script_include>
 </record_update>
